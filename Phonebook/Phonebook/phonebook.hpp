@@ -21,8 +21,9 @@ class Phonebook
 {
 	std::vector<PhonebookEntry> entries;
 public:
-	void addNew(PhonebookEntry entry)
-	{
-		entries.push_back(entry);
-	}
+	void addNew(PhonebookEntry entry);
+
+	size_t size();
+	std::vector<PhonebookEntry> getRange(int first, int count);
+
 };

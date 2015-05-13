@@ -68,7 +68,30 @@ public:
 	void printAll()
 	{
 		using namespace std;
-		cout << "printAll!" << endl;
+
+		int pageSize = 5;
+		int pages = (phonebook.size() / pageSize) + 1;
+
+		for (int i = 0; i < pages; i++)
+		{
+			auto items = phonebook.getRange(i * pageSize, pageSize);
+			for(auto item : items)
+			{
+				cout << item.getFirst() << " " << item.getLast() << " - " << item.getNumber() << endl;
+			}
+
+			if (i != pages - 1)
+			{
+				cout << "--- next page ---" << endl;
+
+				string next;
+				getline(cin, next);
+				if (next.length() > 0 && next[0] == 'q')
+				{
+					break;
+				}
+			}
+		}
 	}
 
 	void mainLoop()
