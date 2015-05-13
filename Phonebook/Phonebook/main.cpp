@@ -30,13 +30,22 @@ public:
 	void search()
 	{
 		using namespace std;
-		cout << "search!" << endl;
+		cout << "enter search term: " << endl;
+		string term;
+		cin >> term;
+
+		auto results = phonebook.findMatches(term);
+
+		cout << "found " << results.size() << " results:" << endl;
+		for (auto r : results)
+		{
+			cout << r << endl;
+		}
 	}
 
-	void addNew()
+	PhonebookEntry readEntry()
 	{
 		using namespace std;
-		
 		string first, last, number;
 		cout << "firstname?" << endl;
 		cin >> first;
@@ -44,12 +53,50 @@ public:
 		cin >> last;
 		cout << "number?" << endl;
 		cin >> number;
-		cout << "add " << first << " " << last << " - " << number << " ? (y/n)" << endl;
-		string add = "n";
-		cin >> add;
-		if (add == "y" || add == "yes")
+
+		return PhonebookEntry{ first, last, number };
+	}
+
+	bool confirm()
+	{
+		using namespace std;
+		string resp = "n";
+		cin >> resp;
+		return resp == "y" || resp == "yes";
+	}
+
+	void addNew()
+	{
+		using namespace std;
+		auto entry = readEntry();
+		cout << "add " << entry << " ? (y/n)" << endl;
+		if (confirm())
 		{
-			phonebook.addNew(PhonebookEntry(first, last, number));
+			phonebook.addNew(entry);
+		}
+	}
+
+	bool findEntry(PhonebookEntry& entry)
+	{
+		using namespace std;
+		while (true)
+		{
+			cout << "enter search term for finding update to update: " << endl;
+			string term;
+			cin >> term;
+
+			if (term == "q")
+			{
+				return false;
+			}
+
+			auto results = phonebook.findMatches(term);
+
+			if (results.size() == 1)
+			{
+				entry = results[0];
+				return true;
+			}
 		}
 	}
 
@@ -65,7 +112,7 @@ public:
 		cout << "deleteEntry!" << endl;
 	}
 
-	void printAll()
+	void printAll() const
 	{
 		using namespace std;
 
@@ -77,7 +124,7 @@ public:
 			auto items = phonebook.getRange(i * pageSize, pageSize);
 			for(auto item : items)
 			{
-				cout << item.getFirst() << " " << item.getLast() << " - " << item.getNumber() << endl;
+				cout << item << endl;
 			}
 
 			if (i != pages - 1)
@@ -124,6 +171,11 @@ public:
 				break;
 			case 6:
 				keepRunning = false;
+				break;
+			default:
+				cout << "unknown command" << endl;
+				cin.clear();
+				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 				break;
 			}
 		}
