@@ -77,7 +77,7 @@ std::vector<PhonebookEntry> Phonebook::findMatches(std::string term)
 	using namespace std;
 	vector<PhonebookEntry> matches;
 
-	copy_if(begin(entries), end(entries), back_inserter(matches),
+	copy_if(begin(entries), end(entries), back_inserter(matches), 
 		[term](const PhonebookEntry& entry)
 	{
 		return entry.getFirst().find(term) != string::npos ||
