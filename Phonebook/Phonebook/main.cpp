@@ -103,7 +103,17 @@ public:
 	void updateExisting()
 	{
 		using namespace std;
-		cout << "updateExisting!" << endl;
+		PhonebookEntry entry;
+		if (findEntry(entry))
+		{
+			cout << "found entry (" << entry << "), enter new values:" << endl;
+			auto newEntry = readEntry();
+			cout << "update " << entry << " to " << newEntry << "?" << endl;
+			if (confirm())
+			{
+				phonebook.updateEntry(entry, newEntry);
+			}
+		}
 	}
 
 	void deleteEntry()

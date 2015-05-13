@@ -88,6 +88,13 @@ std::vector<PhonebookEntry> Phonebook::findMatches(std::string term)
 	return matches;
 }
 
+void Phonebook::updateEntry(PhonebookEntry old, PhonebookEntry newEntry)
+{
+	using namespace std;
+	auto it = find(begin(entries), end(entries), old);
+	*it = newEntry;
+}
+
 void Phonebook::remove(PhonebookEntry entry)
 {
 	entries.erase(std::remove(entries.begin(), entries.end(), entry), entries.end());
