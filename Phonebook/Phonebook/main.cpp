@@ -109,7 +109,15 @@ public:
 	void deleteEntry()
 	{
 		using namespace std;
-		cout << "deleteEntry!" << endl;
+		PhonebookEntry entry;
+		if (findEntry(entry))
+		{
+			cout << "found entry (" << entry << "), remove?" << endl;
+			if (confirm())
+			{
+				phonebook.remove(entry);
+			}
+		}
 	}
 
 	void printAll() const
