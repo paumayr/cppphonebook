@@ -72,7 +72,7 @@ std::vector<PhonebookEntry> Phonebook::getRange(int first, int count) const
 	return result;
 }
 
-std::vector<PhonebookEntry> Phonebook::findMatches(std::string term)
+std::vector<PhonebookEntry> Phonebook::findMatches(std::string term) const
 {
 	using namespace std;
 	vector<PhonebookEntry> matches;

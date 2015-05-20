@@ -30,7 +30,7 @@ public:
 
 	size_t size() const;
 	std::vector<PhonebookEntry> getRange(int first, int count) const;
-	std::vector<PhonebookEntry> findMatches(std::string term);
+	std::vector<PhonebookEntry> findMatches(std::string term) const;
 	void updateEntry(PhonebookEntry old, PhonebookEntry newEntry);
 	void remove(PhonebookEntry entry);
 };
