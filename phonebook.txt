@@ -1,0 +1,131 @@
+Build an command-line phone book
+================================
+
+Iterative approach
+
+1.) build loop to enter new contact, store contact fields in separate in variables, print contact after entered
+
+> firstname?
+< philipp
+> lastname?
+< aumayr
+> number?
+< +435353232323
+> philipp aumayr - +435353232323
+> new contact?
+
+2.) build menu loop, entries are no-ops (just print the operation)
+
+> menu
+> 1) search
+> 2) add new
+> 3) update existing
+> 4) delete
+> 5) print all
+> 6) quit
+< 1
+> search!
+> menu
+> 1) search
+> 2) add new
+> 3) update existing
+> 4) delete
+> 5) print all
+> 6) quit
+< 7
+invalid command!
+...
+
+
+3.) create phonebook class, implement 'add new',
+
+> menu
+> 1) search
+> 2) add new
+> 3) update existing
+> 4) delete
+> 5) print all
+> 6) quit
+< 2
+> firstname?
+< philipp
+> lastname?
+< aumayr
+> number? 
+< +43554535343
+> Are you sure you want to add 'aumayr', 'philipp', '+43554535343' (y/n)
+< y
+> Added 'aumayr', 'philipp', '+43554535343'.
+> menu
+> 1) search
+> 2) add new
+> 3) update existing
+> 4) delete
+> 5) print all
+> 6) quit
+
+4.) implement print all, [bonus points for paging]
+> menu
+> 1) search
+> 2) add new
+> 3) update existing
+> 4) delete
+> 5) print all
+> 6) quit
+< 5
+> All contacts:
+> Philipp Aumayr, +43554535343
+> Simon Opelt, +434243242424
+...
+...
+
+5.) implement search
+
+> menu
+> 1) search
+> 2) add new
+> 3) update existing
+> 4) delete
+> 5) print all
+> 6) quit
+< 1
+> enter search string:
+< phi
+> found 1 matching result(s):
+> Philipp Aumayr, +43554535343
+
+
+6.) implement delete
+
+> menu
+> 1) search
+> 2) add new
+> 3) update existing
+> 4) delete
+> 5) print all
+> 6) quit
+< 4
+> enter search criteria
+< i
+> found 2 contacts, be more specific!
+> Philipp Aumayr, +43554535343
+> Simon Opelt, +434243242424
+
+< phi
+> Are you sure you want to remove 'Philipp Aumayr, +43554535343'?
+< yes
+> Removed 'Philipp Aumayr, +43554535343'.
+
+7.) implement update existing
+
+8.) refactor application (open closed principle!)
+extensible menu: 
+- add command infrastructure
+
+9.) add multiple types of contacts (company / person)
+
+10.) refactor application (open closed principle!)
+- create factory for person types, make 
+
+11.) write tests for menu
+12.) write tests for individual commands
