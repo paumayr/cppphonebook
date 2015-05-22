@@ -79,17 +79,34 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddNewCommand.hpp" />
+    <ClInclude Include="DeleteCommand.hpp" />
+    <ClInclude Include="MenuCommand.hpp" />
+    <ClInclude Include="OpenCommand.hpp" />
     <ClInclude Include="phonebook.hpp" />
+    <ClInclude Include="phonebookapp.hpp" />
+    <ClInclude Include="PrintAllCommand.hpp" />
+    <ClInclude Include="SaveCommand.hpp" />
+    <ClInclude Include="SearchCommand.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="UpdateCommand.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddNewCommand.cpp" />
+    <ClCompile Include="DeleteCommand.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OpenCommand.cpp" />
     <ClCompile Include="phonebook.cpp" />
+    <ClCompile Include="phonebookapp.cpp" />
+    <ClCompile Include="PrintAllCommand.cpp" />
+    <ClCompile Include="SaveCommand.cpp" />
+    <ClCompile Include="SearchCommand.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="UpdateCommand.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
